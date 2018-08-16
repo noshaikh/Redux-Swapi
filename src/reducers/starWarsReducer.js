@@ -18,7 +18,7 @@ export const charsReducer = (state = initialState, action) => {
       return Object.assign({}, state, { fetchingPeeps: true });
     case FETCH_SUCCESS:
       return Object.assign({}, state, {
-        peeps: [...state.dogs, ...action.payload],
+        peeps: action.payload,
         fetchingPeeps: false
       });
     case FETCH_ERROR:

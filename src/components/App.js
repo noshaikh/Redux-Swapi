@@ -12,14 +12,15 @@ class App extends Component {
     // call our action
   }
   render() {
+    console.log(this.props);
     return (
       <div className="App">
         {this.props.fetching ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
           <ul>
-            {this.props.chars.map(char => {
-              return <li key={char.name}>{char.name}</li>;
+            {this.props.peeps.map(peep => {
+              return <li key={peep.name}>{peep.name}</li>;
             })}
           </ul>
         )}
@@ -28,12 +29,10 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = state => {
-  return {
-    chars: state.chars,
-    fetchingPeeps: state.fetchingPeeps
-  };
-};
+const mapDispatchToProps = state => ({
+  peeps: state.charsReducer.peeps,
+  fetchingPeeps: state.charsReducer.fetchingPeeps
+});
 
 // our mapDispatchToProps needs to have two properties inherited from state
 // the chars and the fetching boolean

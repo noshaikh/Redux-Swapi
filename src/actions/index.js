@@ -12,10 +12,11 @@ export const fetchPeeps = () => {
     dispatch({ type: FETCHING });
     promise
       .then(response => {
-        dispatch({ type: FETCH_SUCCESS, payload: response.data.message });
+        // console.log(response.data.results);
+        dispatch({ type: FETCH_SUCCESS, payload: response.data.results });
       })
       .catch(err => {
-        dispatch({ type: FETCH_ERROR });
+        dispatch({ type: FETCH_ERROR, payload: err });
       });
   };
 };
